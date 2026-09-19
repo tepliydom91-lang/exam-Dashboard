@@ -1,9 +1,10 @@
-const Roles = {
-    teamLead: 'teamLead',
-    member: 'member'
-} as const;
+type Role = 'member' | 'teamLead'
 
-type Role = typeof Roles[keyof typeof Roles];
+export interface User {
+    id: number
+    name:string
+    email:string
+    role:  Role
+}
 
-export { Roles };
 export type { Role };
