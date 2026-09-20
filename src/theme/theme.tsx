@@ -60,26 +60,31 @@ export const getTheme = (mode: 'light' | 'dark') =>
             h1: {
                 fontSize: '32px',
                 fontWeight: 700,
+                color: mode === 'light' ? '#1A1A1A' : '#FFFFFF',
             },
 
             h2: {
                 fontSize: '28px',
                 fontWeight: 700,
+                color: mode === 'light' ? '#1A1A1A' : '#FFFFFF',
             },
 
             h3: {
                 fontSize: '24px',
                 fontWeight: 600,
+                color: mode === 'light' ? '#1A1A1A' : '#FFFFFF',
             },
 
             body1: {
                 fontSize: '16px',
+                color: mode === 'light' ? '#333333' : '#E0E0E0',
             },
 
             body2: {
                 fontSize: '14px',
+                color: mode === 'light' ? '#666666' : '#A0A0A0',
             },
-        },
+          },
 
         shape: {
             borderRadius: 8,
