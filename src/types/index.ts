@@ -4,7 +4,8 @@ export interface User {
     id: number
     name:string
     email:string
-    role:  Role
+    role: Role
+    password:string
 }
 
 export type { Role };
