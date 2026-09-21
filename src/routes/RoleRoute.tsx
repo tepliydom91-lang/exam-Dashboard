@@ -1,18 +1,16 @@
 import { Navigate, Outlet } from "react-router-dom";
 import type { Role } from "../types";
-import type { User } from "../types";
+import { useUserStore } from "../store/userStore";
 
 interface RoleRouterProps {
     roles: Role[]
 }
 
-export const RoleRoute = ({ roles }:RoleRouterProps) => {
-    const user:User = {
-        id: 1,
-        name: "dmytro",
-        email: '123@gmail.com',
-        role: 'member'
-    }
+export const RoleRoute = ({ roles }: RoleRouterProps) => {
+    
+    const user = useUserStore((state) => state.user)
+
+
     
     if (!user) {
         return <Navigate to='/login' replace/>
