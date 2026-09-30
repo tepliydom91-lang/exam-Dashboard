@@ -1,21 +1,24 @@
 import { create } from 'zustand'
-import type { User } from '../types'
+import type { SignInDTO, User } from '../types'
 import mockUser from '../data/user.json'
+const users = mockUser as User[];
+
 
 interface UserStore {
     user: User | null
     loading: boolean
     error: string | null
-    getUser: (data:User) => Promise<void>
+    getUser: (data:SignInDTO) => Promise<User | undefined>
     clearUser: () => void
 }
+
 
 export const useUserStore = create < UserStore > ((set) => ({
     user: null,
     loading: false,
     error: null,
 
-    getUser: async (data:User) => {
+    getUser: async (data:SignInDTO) => {
         set({
             loading: true,
             error: null,
@@ -23,7 +26,8 @@ export const useUserStore = create < UserStore > ((set) => ({
 
         try {
             await new Promise((resolve) => setTimeout(resolve, 1000))
-            const user = mockUser.find(({ email }) => email === data.email);
+            const user = users.find(({ email }) => email === data.email);
+            console.log(user)
             if (!user) {
                 throw new Error('user not found')
             }
@@ -31,8 +35,9 @@ export const useUserStore = create < UserStore > ((set) => ({
                 throw new Error('Invalid credentials')
             }
             set({
-                user: data,
+                user:user,
             })
+            return user
         } catch {
             set({
                 error: 'Не удалось получить пользователя',

@@ -1,16 +1,46 @@
+
 [
     {
-        "id": 1,
-        "name": "dima",
-        "email": "123@gmail.com",
-        "role": "member",
-        "password": "123121113"
+        "id": "1",
+        "name": "Dima",
+        "email": "tepliy.dom91@gmail.com",
+        "role": "teamLead",
+        "password": "111111"
     },
     {
-        "id": 2,
+        "id": "2",
         "name": "Pasha",
-        "email": "12113@gmail.com",
+        "email": "pasha@gmail.com",
         "role": "teamLead",
         "password": "123123"
+    },
+    {
+        "id": "3",
+        "name": "Alex",
+        "email": "alex@gmail.com",
+        "role": "member",
+        "password": "111111"
+    },
+    {
+        "id": "4",
+        "name": "Max",
+        "email": "max@gmail.com",
+        "role": "member",
+        "password": "222222"
+    },
+    {
+        "id": "5",
+        "name": "Anna",
+        "email": "anna@gmail.com",
+        "role": "member",
+        "password": "333333"
+    },
+    {
+        "id": "6",
+        "name": "Kate",
+        "email": "kate@gmail.com",
+        "role": "member",
+        "password": "444444"
     }
 ]
+

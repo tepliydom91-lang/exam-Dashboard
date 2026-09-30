@@ -5,6 +5,8 @@ import { PrivateRouter } from "./PrivateRoute";
 import { RoleRoute } from "./RoleRoute";
 import { TaskPage } from "../pages/TaskPage";
 import { CreateTaskPage } from "../pages/CreateTaskPage"
+import { NotFound } from "../pages/NotFoundPage";
+import { TaskDetailPage } from "../pages/TaskDetailPage";
 
 export const router = createBrowserRouter([
     {
@@ -29,6 +31,10 @@ export const router = createBrowserRouter([
                             {
                                 index: true,
                                 element: <TaskPage />
+                            },
+                            {
+                                path: '/tasks/:id',
+                                element: <TaskDetailPage />
                             }
 
                         ]
@@ -51,5 +57,9 @@ export const router = createBrowserRouter([
                 ]
             }
         ]
+    },
+    {
+        path: '*',
+        element: <NotFound />
     }
 ])

@@ -1,0 +1,1000 @@
+
+[
+    {
+        "id": "1",
+        "title": "Create authentication flow",
+        "description": "Implement sign in and user authentication.",
+        "assigneeId": "3",
+        "assigneeName": "Alex",
+        "priority": "high",
+        "status": "in-progress",
+        "dueDate": "28.09.2026",
+        "createdAt": "20.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "1",
+                "text": "Start with the login form.",
+                "authorName": "Dima",
+                "createdAt": "21.09.2026"
+            },
+            {
+                "id": "14",
+                "text": "Can you also handle the redirect after successful login?",
+                "authorName": "Pasha",
+                "createdAt": "22.09.2026"
+            },
+            {
+                "id": "15",
+                "text": "The validation looks good. Please test an invalid password too.",
+                "authorName": "Alex",
+                "createdAt": "22.09.2026"
+            },
+            {
+                "id": "16",
+                "text": "I will check the authentication flow after this.",
+                "authorName": "Dima",
+                "createdAt": "23.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "2",
+        "title": "Build login form",
+        "description": "Create the login form using React Hook Form and Zod.",
+        "assigneeId": "4",
+        "assigneeName": "Max",
+        "priority": "normal",
+        "status": "todo",
+        "dueDate": "29.09.2026",
+        "createdAt": "21.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "17",
+                "text": "Use the existing Input component if possible.",
+                "authorName": "Dima",
+                "createdAt": "22.09.2026"
+            },
+            {
+                "id": "18",
+                "text": "I added validation for email and password.",
+                "authorName": "Max",
+                "createdAt": "23.09.2026"
+            },
+            {
+                "id": "19",
+                "text": "Please make sure the submit button is disabled while loading.",
+                "authorName": "Pasha",
+                "createdAt": "23.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "3",
+        "title": "Create Zustand user store",
+        "description": "Implement global user state with Zustand.",
+        "assigneeId": "5",
+        "assigneeName": "Anna",
+        "priority": "high",
+        "status": "review",
+        "dueDate": "30.09.2026",
+        "createdAt": "21.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "2",
+                "text": "Please add loading and error states.",
+                "authorName": "Pasha",
+                "createdAt": "22.09.2026"
+            },
+            {
+                "id": "20",
+                "text": "The store should clear the previous error before a new request.",
+                "authorName": "Dima",
+                "createdAt": "23.09.2026"
+            },
+            {
+                "id": "21",
+                "text": "I added the loading state and tested the error case.",
+                "authorName": "Anna",
+                "createdAt": "24.09.2026"
+            },
+            {
+                "id": "22",
+                "text": "Please return the user from getUser so the form can navigate.",
+                "authorName": "Pasha",
+                "createdAt": "24.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "4",
+        "title": "Configure protected routes",
+        "description": "Create a private route for authenticated users.",
+        "assigneeId": "6",
+        "assigneeName": "Kate",
+        "priority": "high",
+        "status": "todo",
+        "dueDate": "01.10.2026",
+        "createdAt": "22.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "23",
+                "text": "PrivateRouter should redirect unauthenticated users to login.",
+                "authorName": "Dima",
+                "createdAt": "23.09.2026"
+            },
+            {
+                "id": "24",
+                "text": "I tested the route without an authenticated user.",
+                "authorName": "Kate",
+                "createdAt": "24.09.2026"
+            },
+            {
+                "id": "25",
+                "text": "The protected route works correctly now.",
+                "authorName": "Pasha",
+                "createdAt": "24.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "5",
+        "title": "Implement role permissions",
+        "description": "Restrict pages based on teamLead and member roles.",
+        "assigneeId": "3",
+        "assigneeName": "Alex",
+        "priority": "normal",
+        "status": "review",
+        "dueDate": "02.10.2026",
+        "createdAt": "22.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "3",
+                "text": "Check access to create-task.",
+                "authorName": "Pasha",
+                "createdAt": "23.09.2026"
+            },
+            {
+                "id": "26",
+                "text": "Team leads should be allowed to open create-task.",
+                "authorName": "Dima",
+                "createdAt": "23.09.2026"
+            },
+            {
+                "id": "27",
+                "text": "Members should not be able to access that page directly.",
+                "authorName": "Alex",
+                "createdAt": "24.09.2026"
+            },
+            {
+                "id": "28",
+                "text": "RoleRoute now checks the current user's role.",
+                "authorName": "Pasha",
+                "createdAt": "24.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "6",
+        "title": "Create task list",
+        "description": "Build a page that displays all available tasks.",
+        "assigneeId": "4",
+        "assigneeName": "Max",
+        "priority": "normal",
+        "status": "in-progress",
+        "dueDate": "03.10.2026",
+        "createdAt": "23.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "29",
+                "text": "Add an empty state when there are no tasks.",
+                "authorName": "Dima",
+                "createdAt": "24.09.2026"
+            },
+            {
+                "id": "30",
+                "text": "The task list should be reusable on the dashboard.",
+                "authorName": "Max",
+                "createdAt": "24.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "7",
+        "title": "Create task card",
+        "description": "Design a reusable task card component.",
+        "assigneeId": "5",
+        "assigneeName": "Anna",
+        "priority": "low",
+        "status": "todo",
+        "dueDate": "04.10.2026",
+        "createdAt": "23.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "31",
+                "text": "Show priority and status directly on the card.",
+                "authorName": "Anna",
+                "createdAt": "24.09.2026"
+            },
+            {
+                "id": "32",
+                "text": "Please keep the card component independent from the page.",
+                "authorName": "Pasha",
+                "createdAt": "24.09.2026"
+            },
+            {
+                "id": "33",
+                "text": "I adjusted the spacing between task fields.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "8",
+        "title": "Add task filtering",
+        "description": "Add filters for priority and status.",
+        "assigneeId": "6",
+        "assigneeName": "Kate",
+        "priority": "normal",
+        "status": "in-progress",
+        "dueDate": "05.10.2026",
+        "createdAt": "23.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "4",
+                "text": "Add status filtering first.",
+                "authorName": "Dima",
+                "createdAt": "24.09.2026"
+            },
+            {
+                "id": "34",
+                "text": "Priority filtering can be added after status filtering.",
+                "authorName": "Kate",
+                "createdAt": "24.09.2026"
+            },
+            {
+                "id": "35",
+                "text": "The filters should work together.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "36",
+                "text": "I tested the in-progress filter.",
+                "authorName": "Kate",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "9",
+        "title": "Implement task details",
+        "description": "Create a detailed task page.",
+        "assigneeId": "3",
+        "assigneeName": "Alex",
+        "priority": "high",
+        "status": "todo",
+        "dueDate": "06.10.2026",
+        "createdAt": "24.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "37",
+                "text": "The details page should show comments below the task.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "38",
+                "text": "Add a back button to the task list.",
+                "authorName": "Alex",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "39",
+                "text": "The task id can come from the route params.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "10",
+        "title": "Add task comments",
+        "description": "Allow users to add comments to tasks.",
+        "assigneeId": "4",
+        "assigneeName": "Max",
+        "priority": "normal",
+        "status": "todo",
+        "dueDate": "07.10.2026",
+        "createdAt": "24.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "5",
+                "text": "Comments should show author and date.",
+                "authorName": "Dima",
+                "createdAt": "24.09.2026"
+            },
+            {
+                "id": "40",
+                "text": "We also need an input for creating a new comment.",
+                "authorName": "Max",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "41",
+                "text": "Use the current user from Zustand as the author.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "42",
+                "text": "Empty comments should not be submitted.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "11",
+        "title": "Create dashboard",
+        "description": "Create the main dashboard for task management.",
+        "assigneeId": "5",
+        "assigneeName": "Anna",
+        "priority": "high",
+        "status": "in-progress",
+        "dueDate": "08.10.2026",
+        "createdAt": "24.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "43",
+                "text": "Show the number of active tasks on the dashboard.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "44",
+                "text": "Team leads should see the full task list.",
+                "authorName": "Anna",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "12",
+        "title": "Add task statistics",
+        "description": "Display statistics for completed and active tasks.",
+        "assigneeId": "6",
+        "assigneeName": "Kate",
+        "priority": "low",
+        "status": "todo",
+        "dueDate": "09.10.2026",
+        "createdAt": "24.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "45",
+                "text": "Add separate counts for todo, in-progress and done.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "46",
+                "text": "The statistics should update when task status changes.",
+                "authorName": "Kate",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "47",
+                "text": "Keep the calculation in a selector if possible.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "13",
+        "title": "Improve navigation",
+        "description": "Improve navigation between task pages.",
+        "assigneeId": "3",
+        "assigneeName": "Alex",
+        "priority": "normal",
+        "status": "done",
+        "dueDate": "25.09.2026",
+        "createdAt": "20.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "6",
+                "text": "Looks good.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "48",
+                "text": "Navigation between list and details works correctly.",
+                "authorName": "Alex",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "49",
+                "text": "Let's keep the active route highlighted.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "14",
+        "title": "Create task modal",
+        "description": "Create a modal window for adding new tasks.",
+        "assigneeId": "4",
+        "assigneeName": "Max",
+        "priority": "high",
+        "status": "in-progress",
+        "dueDate": "10.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "50",
+                "text": "The modal should close after a successful submit.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "51",
+                "text": "Add a cancel button as well.",
+                "authorName": "Max",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "52",
+                "text": "Please reset the form after creating a task.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "15",
+        "title": "Validate task form",
+        "description": "Add validation for the create task form.",
+        "assigneeId": "5",
+        "assigneeName": "Anna",
+        "priority": "normal",
+        "status": "review",
+        "dueDate": "11.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "7",
+                "text": "Check required fields.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "53",
+                "text": "Title and description should be required.",
+                "authorName": "Anna",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "54",
+                "text": "Priority should have a default value.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "55",
+                "text": "The form should show field-level errors.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "16",
+        "title": "Implement priority filter",
+        "description": "Allow filtering tasks by priority.",
+        "assigneeId": "6",
+        "assigneeName": "Kate",
+        "priority": "normal",
+        "status": "todo",
+        "dueDate": "12.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "56",
+                "text": "Use low, normal and high as the available values.",
+                "authorName": "Kate",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "57",
+                "text": "The selected priority should remain after other filters change.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "17",
+        "title": "Implement status filter",
+        "description": "Allow filtering tasks by current status.",
+        "assigneeId": "3",
+        "assigneeName": "Alex",
+        "priority": "low",
+        "status": "in-progress",
+        "dueDate": "13.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "58",
+                "text": "Make sure all four statuses are supported.",
+                "authorName": "Alex",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "59",
+                "text": "The status filter should reset when the user chooses All.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "60",
+                "text": "I checked the todo and done states.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "18",
+        "title": "Add task sorting",
+        "description": "Sort tasks by priority and due date.",
+        "assigneeId": "4",
+        "assigneeName": "Max",
+        "priority": "normal",
+        "status": "review",
+        "dueDate": "14.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "8",
+                "text": "Sort by due date by default.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "61",
+                "text": "Sort by due date should be ascending by default.",
+                "authorName": "Max",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "62",
+                "text": "Add an option for sorting by priority.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "63",
+                "text": "Do not mutate the original tasks array while sorting.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "19",
+        "title": "Create user profile",
+        "description": "Create a page displaying current user information.",
+        "assigneeId": "5",
+        "assigneeName": "Anna",
+        "priority": "low",
+        "status": "todo",
+        "dueDate": "15.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "64",
+                "text": "The profile should use the current user from the store.",
+                "authorName": "Anna",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "65",
+                "text": "Show the user's role next to the name.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "20",
+        "title": "Display current user",
+        "description": "Show current user name and role in the header.",
+        "assigneeId": "6",
+        "assigneeName": "Kate",
+        "priority": "normal",
+        "status": "done",
+        "dueDate": "25.09.2026",
+        "createdAt": "20.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "9",
+                "text": "Header integration completed.",
+                "authorName": "Kate",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "66",
+                "text": "The header should update immediately after login.",
+                "authorName": "Kate",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "67",
+                "text": "Add a logout button for authenticated users.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "21",
+        "title": "Create logout functionality",
+        "description": "Add logout action that clears the current user.",
+        "assigneeId": "3",
+        "assigneeName": "Alex",
+        "priority": "high",
+        "status": "done",
+        "dueDate": "26.09.2026",
+        "createdAt": "22.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "68",
+                "text": "After logout the user should be redirected to login.",
+                "authorName": "Alex",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "69",
+                "text": "Make sure the stored user is cleared completely.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "70",
+                "text": "I tested logout from the dashboard.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "22",
+        "title": "Handle authentication errors",
+        "description": "Improve error messages during authentication.",
+        "assigneeId": "4",
+        "assigneeName": "Max",
+        "priority": "normal",
+        "status": "in-progress",
+        "dueDate": "16.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "71",
+                "text": "Avoid exposing whether the email or password was incorrect.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "72",
+                "text": "The error message should be clear for the user.",
+                "authorName": "Max",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "73",
+                "text": "Loading should stop even when authentication fails.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "23",
+        "title": "Improve loading state",
+        "description": "Improve the loading indicator during requests.",
+        "assigneeId": "5",
+        "assigneeName": "Anna",
+        "priority": "low",
+        "status": "todo",
+        "dueDate": "17.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "74",
+                "text": "The spinner should be visible only during the request.",
+                "authorName": "Anna",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "75",
+                "text": "Keep the layout stable while loading.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "24",
+        "title": "Create empty task state",
+        "description": "Show a message when there are no tasks.",
+        "assigneeId": "6",
+        "assigneeName": "Kate",
+        "priority": "low",
+        "status": "todo",
+        "dueDate": "18.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "76",
+                "text": "Show a helpful message when filters return no tasks.",
+                "authorName": "Kate",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "77",
+                "text": "Add a button to clear the filters.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "78",
+                "text": "The empty state should work on the dashboard too.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "25",
+        "title": "Create responsive task list",
+        "description": "Make the task list responsive for mobile screens.",
+        "assigneeId": "3",
+        "assigneeName": "Alex",
+        "priority": "high",
+        "status": "review",
+        "dueDate": "19.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "10",
+                "text": "Check mobile layout.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "79",
+                "text": "Check the layout at tablet width too.",
+                "authorName": "Alex",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "80",
+                "text": "Task cards should not overflow on small screens.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "81",
+                "text": "The filters need to stay usable on mobile.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "26",
+        "title": "Add task status changes",
+        "description": "Allow users to move tasks between statuses.",
+        "assigneeId": "4",
+        "assigneeName": "Max",
+        "priority": "high",
+        "status": "todo",
+        "dueDate": "20.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "82",
+                "text": "Only valid status values should be allowed.",
+                "authorName": "Max",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "83",
+                "text": "Update the task in the store after changing its status.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "84",
+                "text": "The list should refresh without reloading the page.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "27",
+        "title": "Add task ownership check",
+        "description": "Check whether the current user can edit a task.",
+        "assigneeId": "5",
+        "assigneeName": "Anna",
+        "priority": "high",
+        "status": "in-progress",
+        "dueDate": "21.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "11",
+                "text": "This should work together with roles.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "85",
+                "text": "A member should edit only tasks they are allowed to edit.",
+                "authorName": "Anna",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "86",
+                "text": "Team leads should have access according to the role rules.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "87",
+                "text": "Let's keep the permission check in one place.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "28",
+        "title": "Implement comment validation",
+        "description": "Prevent empty comments from being submitted.",
+        "assigneeId": "6",
+        "assigneeName": "Kate",
+        "priority": "normal",
+        "status": "review",
+        "dueDate": "22.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "88",
+                "text": "Trim whitespace before validating the comment.",
+                "authorName": "Kate",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "89",
+                "text": "Show an error when the comment contains only spaces.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "90",
+                "text": "The submit button should stay disabled for an empty comment.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "29",
+        "title": "Prepare project demo",
+        "description": "Prepare the application for project demonstration.",
+        "assigneeId": "3",
+        "assigneeName": "Alex",
+        "priority": "high",
+        "status": "in-progress",
+        "dueDate": "23.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "1",
+        "comments": [
+            {
+                "id": "12",
+                "text": "Demo should include authentication and roles.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "91",
+                "text": "The demo should cover login, protected routes and roles.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "92",
+                "text": "Add at least one task with multiple comments to the demo.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "93",
+                "text": "Check the application after a fresh reload.",
+                "authorName": "Alex",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    },
+    {
+        "id": "30",
+        "title": "Final project testing",
+        "description": "Test authentication, roles, tasks and comments.",
+        "assigneeId": "4",
+        "assigneeName": "Max",
+        "priority": "high",
+        "status": "todo",
+        "dueDate": "24.10.2026",
+        "createdAt": "25.09.2026",
+        "createdBy": "2",
+        "comments": [
+            {
+                "id": "13",
+                "text": "Test both teamLead and member accounts.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "94",
+                "text": "Test both valid and invalid login credentials.",
+                "authorName": "Dima",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "95",
+                "text": "Check that members cannot open create-task directly.",
+                "authorName": "Pasha",
+                "createdAt": "25.09.2026"
+            },
+            {
+                "id": "96",
+                "text": "Test adding a comment and changing task status.",
+                "authorName": "Max",
+                "createdAt": "25.09.2026"
+            }
+        ]
+    }
+]
+

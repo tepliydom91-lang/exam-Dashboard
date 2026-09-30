@@ -10,7 +10,7 @@ export const RoleRoute = ({ roles }: RoleRouterProps) => {
     
     const user = useUserStore((state) => state.user)
 
-
+console.log(user,55)
     
     if (!user) {
         return <Navigate to='/login' replace/>
