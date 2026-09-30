@@ -1,5 +1,5 @@
 type Role = 'member' | 'teamLead'
-type TaskPriority = 'low' | 'normal' | 'high'
+export type  TaskPriority = 'low' | 'normal' | 'high'
 export type TaskStatus = 'todo' | 'in-progress' | 'review' | 'done'
 
 export interface User {
@@ -33,7 +33,7 @@ export interface Task {
     dueDate: Date
     createdAt: Date
     createdBy:string
-    comments:CommentsTask
+    comments:CommentsTask[]
 
 }
 

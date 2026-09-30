@@ -1,13 +1,17 @@
-import Typography from "@mui/material/Typography"
-import { SingIn } from "../../components/SignIn"
+import Typography from "@mui/material/Typography";
+import { SingIn } from "../../components/SignIn";
+import { Container, Content } from "./style";
 
 export const LoginPage = () => {
     return (
-        <>
-            <Typography variant="h1">LoginPage</Typography>
+        <Container>
+            <Content>
+                <Typography variant="h1">
+                    Login
+                </Typography>
 
-            <SingIn />
-        </>
-
-    )
-}
+                <SingIn />
+            </Content>
+        </Container>
+    );
+};

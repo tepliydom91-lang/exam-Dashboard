@@ -1,21 +1,50 @@
-import { useTasksStore } from "../../store/taskStore"
-// import { TasksCard } from "../TasksCard"
-// import { StyledList } from "./style"
-
-export const TasksList = () => {
 
 
+import { useState } from "react"
+import type { Task, TaskPriority } from "../../types"
+import { TaskCard } from "../TasksCard"
+import { TaskFilters } from "../TaskFilters"
+import { StyledList } from "./style"
 
+interface TasksListProps {
+    tasks: Task[]
+}
+
+export const TasksList = ({ tasks }: TasksListProps) => {
+    const [search, setSearch] = useState("")
+    const [priority, setPriority] =
+        useState<TaskPriority | "all">("all")
+
+
+    const filteredTasks = tasks.filter((task) => {
+        const matchesSearch = task.title
+            .toLowerCase()
+            .includes(search.toLowerCase())
+
+        const matchesPriority =
+            priority === "all" || task.priority === priority
+
+        return matchesSearch && matchesPriority
+    })
+    
+        
     return (
-        <div>
+        <>
+            <TaskFilters
+                search={search}
+                priority={priority}
+                onSearchChange={setSearch}
+                onPriorityChange={setPriority}
+            />
 
-            {/* <StyledList>
-                {tasksId.map((id) => (
-                    <TasksCard
-                        key={id}
-                    id={id}/>
+            <StyledList>
+                {filteredTasks.map((task) => (
+                    <TaskCard
+                        key={task.id}
+                        task={task}
+                    />
                 ))}
-            </StyledList> */}
-        </div>
+            </StyledList>
+        </>
     )
 }
