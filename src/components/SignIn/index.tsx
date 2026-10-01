@@ -10,8 +10,11 @@ import { useNavigate } from "react-router-dom";
 
 import {
     Form,
+    Title,
+    Subtitle,
     ErrorMessage,
-} from "./style";
+} from "./style"
+
 
 export const SingIn = () => {
     const { loading, error, getUser } = useUserStore((state) => state);
@@ -39,8 +42,15 @@ export const SingIn = () => {
     }
 
     return (
+
             <FormProvider {...formProps}>
-                <Form onSubmit={formProps.handleSubmit(onSubmit)}>
+            <Form onSubmit={formProps.handleSubmit(onSubmit)}>
+                
+                <Title>Sign in</Title>
+
+                <Subtitle>
+                    Sign in to your account
+                </Subtitle>
 
                     {error && (
                         <ErrorMessage>

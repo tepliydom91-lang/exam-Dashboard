@@ -1,4 +1,6 @@
+import { useState } from "react"
 import type { Task } from "../../types"
+import { Button } from "../Button"
 import {
     StyledCard,
     Header,
@@ -20,7 +22,9 @@ interface TaskCardProps {
     task: Task
 }
 
+
 export const TaskCard = ({ task }: TaskCardProps) => {
+    const [isCommentsOpen, setCommentsOpen] = useState(false)
     return (
         <StyledCard>
             <Header>
@@ -63,22 +67,31 @@ export const TaskCard = ({ task }: TaskCardProps) => {
                     <Value>{task.createdBy}</Value>
                 </InfoItem>
             </Info>
+            <Button
+                label={isCommentsOpen ? 'Hide comments' : "Show comments"}
+                type="button"
+                onClick={() => setCommentsOpen(prev => !prev)}
+            />
 
-            <Comments>
-                <Label>Comments ({task.comments.length})</Label>
+            {isCommentsOpen && (
+                <Comments>
+                    <Label>Comments ({task.comments.length})</Label>
 
-                {task.comments.map((comment) => (
-                    <Comment key={comment.id}>
-                        <CommentText>
-                            {comment.text}
-                        </CommentText>
+                    {task.comments.map((comment) => (
+                        <Comment key={comment.id}>
+                            <CommentText>
+                                {comment.text}
+                            </CommentText>
 
-                        <CommentAuthor>
-                            {comment.authorName} · {comment.createdAt}
-                        </CommentAuthor>
-                    </Comment>
-                ))}
-            </Comments>
+                            <CommentAuthor>
+                                {comment.authorName} · {comment.createdAt}
+                            </CommentAuthor>
+                        </Comment>
+                    ))}
+                </Comments>
+            )}
+
+
         </StyledCard>
     )
 }

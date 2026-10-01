@@ -1,90 +1,81 @@
-import { createTheme } from '@mui/material/styles'
+import { createTheme } from "@mui/material/styles"
 
-export const getTheme = (mode: 'light' | 'dark') =>
+export const getTheme = (mode: "light" | "dark") =>
     createTheme({
         palette: {
             mode,
 
-            ...(mode === 'light'
+            ...(mode === "light"
                 ? {
                     background: {
-                        default: '#F5F7FA',
-                        paper: '#FFFFFF',
+                        default: "#F5F7FA",
+                        paper: "#FFFFFF",
                     },
 
                     text: {
-                        primary: '#1A1A1A',
-                        secondary: '#666666',
+                        primary: "#1A1A1A",
+                        secondary: "#666666",
                     },
 
-                    title: {
-                        main: '#1A1A1A',
+                    divider: "#E1E4E8",
+
+                    primary: {
+                        main: "#1976D2",
                     },
 
-                    body1: {
-                        main: '#333333',
-                    },
-
-                    body2: {
-                        main: '#666666',
+                    action: {
+                        hover: "#F0F2F5",
                     },
                 }
                 : {
                     background: {
-                        default: '#121212',
-                        paper: '#1E1E1E',
+                        default: "#121212",
+                        paper: "#1E1E1E",
                     },
 
                     text: {
-                        primary: '#FFFFFF',
-                        secondary: '#BDBDBD',
+                        primary: "#FFFFFF",
+                        secondary: "#BDBDBD",
                     },
 
-                    title: {
-                        main: '#FFFFFF',
+                    divider: "#333333",
+
+                    primary: {
+                        main: "#90CAF9",
                     },
 
-                    body1: {
-                        main: '#E0E0E0',
-                    },
-
-                    body2: {
-                        main: '#A0A0A0',
+                    action: {
+                        hover: "#2A2A2A",
                     },
                 }),
         },
 
         typography: {
-            fontFamily: 'Inter, Arial, sans-serif',
+            fontFamily: "Inter, Arial, sans-serif",
 
             h1: {
-                fontSize: '32px',
+                fontSize: "32px",
                 fontWeight: 700,
-                color: mode === 'light' ? '#1A1A1A' : '#FFFFFF',
             },
 
             h2: {
-                fontSize: '28px',
+                fontSize: "28px",
                 fontWeight: 700,
-                color: mode === 'light' ? '#1A1A1A' : '#FFFFFF',
             },
 
             h3: {
-                fontSize: '24px',
+                fontSize: "24px",
                 fontWeight: 600,
-                color: mode === 'light' ? '#1A1A1A' : '#FFFFFF',
             },
 
             body1: {
-                fontSize: '16px',
-                color: mode === 'light' ? '#333333' : '#E0E0E0',
+                fontSize: "16px",
             },
 
             body2: {
-                fontSize: '14px',
-                color: mode === 'light' ? '#666666' : '#A0A0A0',
+                fontSize: "14px",
             },
-          },
+        },
 
         shape: {
             borderRadius: 8,
@@ -94,7 +85,7 @@ export const getTheme = (mode: 'light' | 'dark') =>
             MuiButton: {
                 styleOverrides: {
                     root: {
-                        textTransform: 'none',
+                        textTransform: "none",
                         borderRadius: 8,
                     },
                 },
@@ -103,7 +94,25 @@ export const getTheme = (mode: 'light' | 'dark') =>
             MuiPaper: {
                 styleOverrides: {
                     root: {
-                        backgroundImage: 'none',
+                        backgroundImage: "none",
+                    },
+                },
+            },
+
+            MuiCard: {
+                styleOverrides: {
+                    root: {
+                        backgroundImage: "none",
+                    },
+                },
+            },
+
+            MuiDivider: {
+                styleOverrides: {
+                    root: {
+                        borderColor: mode === "light"
+                            ? "#E1E4E8"
+                            : "#333333",
                     },
                 },
             },
