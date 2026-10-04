@@ -1,5 +1,4 @@
 import { useState } from "react"
-import type { Task } from "../../types"
 import { Button } from "../Button"
 import {
     StyledCard,
@@ -17,14 +16,45 @@ import {
     CommentText,
     CommentAuthor,
 } from "./style"
+import { useTasksStore } from "../../store/taskStore"
+import { Textarea } from "../Textarea"
+import { FormProvider, useForm, type SubmitHandler } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
+import type { CommentDTO } from "../../types"
+import { commentSheme } from "../../scheme/commentScheme"
+
+import { useUserStore } from "../../store/userStore"
+
+
+
 
 interface TaskCardProps {
-    task: Task
+    id: string
 }
 
 
-export const TaskCard = ({ task }: TaskCardProps) => {
+export const TaskCard = ({ id }: TaskCardProps) => {
+    const {addComment} = useTasksStore((state)=> state)
     const [isCommentsOpen, setCommentsOpen] = useState(false)
+    const [newComment, setNewComment] = useState(false)
+    const task = useTasksStore((state) => state.tasks[id])
+    const user = useUserStore((state) => state.user);
+
+    const formProps = useForm<CommentDTO>({
+        defaultValues: {
+            text: '',
+            authorName:user ? user.name : ''
+        },
+        resolver: zodResolver(commentSheme)
+    });
+    const onSubmit: SubmitHandler<CommentDTO> = async (data) => {
+        console.log(data,)
+        addComment(id, data)
+        
+        formProps.reset()
+        setNewComment(false)
+    };
+
     return (
         <StyledCard>
             <Header>
@@ -88,6 +118,32 @@ export const TaskCard = ({ task }: TaskCardProps) => {
                             </CommentAuthor>
                         </Comment>
                     ))}
+                    <Button
+                        type='button'
+                        label="add comment"
+                        onClick={() => setNewComment(prev => !prev)}
+                    />
+
+                    {
+                        newComment && (
+                            <FormProvider {...formProps}>
+                                <form onSubmit={formProps.handleSubmit(onSubmit)}>
+
+                                    <Textarea
+                                        name='text'
+                                        placeholder="placeholder"
+                                        label="description"
+                                    />
+
+                                    <Button
+                                        type='submit'
+                                        label="Submit"
+                                    />
+                                </form>
+                            </FormProvider>
+
+                        )
+                    }
                 </Comments>
             )}
 

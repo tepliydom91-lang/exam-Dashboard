@@ -5,10 +5,9 @@ import { VisibilityOff, Visibility } from "@mui/icons-material";
 
 interface InputProps {
     label: string
-    type: 'text' | 'password' | 'email'
+    type: 'text' | 'password' | 'email' | 'date'
     placeholder: string
     name: string
-
 }
 
 export const Input = ({ name, label, type, placeholder }: InputProps) => {

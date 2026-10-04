@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { Task } from '../types'
+import type { CommentDTO, Task, TaskDTO } from '../types'
 import mockTasks from '../data/task.json'
 const tasks = mockTasks as Task[];
 
@@ -12,7 +12,9 @@ interface TaskStore {
     loading: boolean
     error: string | null
     getTasks: () => Promise<void>
-    // clearUser: () => void
+    addComment: (taskId: string, comment: CommentDTO) => Promise<void>
+    addTask: (data: TaskDTO) => Promise<void>
+    initialized: boolean
 }
 
 
@@ -21,9 +23,10 @@ export const useTasksStore = create<TaskStore>((set) => ({
     taskIdTodo: [],
     taskIdReview: [],
     taskIdDone: [],
-    taskIdInProgress:[],
+    taskIdInProgress: [],
     loading: false,
     error: null,
+    initialized: false,
 
     getTasks: async () => {
         set({
@@ -33,21 +36,22 @@ export const useTasksStore = create<TaskStore>((set) => ({
 
         try {
             await new Promise((resolve) => setTimeout(resolve, 1000))
-            const taskIdTodo = tasks.filter(({status}) => status === 'todo').map(({id}) => id)
+            const taskIdTodo = tasks.filter(({ status }) => status === 'todo').map(({ id }) => id)
             const taskIdReview = tasks.filter(({ status }) => status === 'review').map(({ id }) => id)
             const taskIdDone = tasks.filter(({ status }) => status === 'done').map(({ id }) => id)
-            const taskIdInProgress = tasks.filter(({ status }) => status === 'in-progress').map(({ id }) => id)
-            
+            const taskIdInProgress = tasks.filter(({ status }) => status === 'inProgress').map(({ id }) => id)
+
             const taskObject = tasks.reduce((acc: Record<string, Task>, curr) => {
                 acc[curr.id] = curr
                 return acc
-            },{})
+            }, {})
             set({
                 taskIdTodo,
                 taskIdReview,
                 taskIdDone,
                 taskIdInProgress,
-                tasks:taskObject
+                tasks: taskObject,
+                initialized: true
             })
         } catch {
             set({
@@ -58,7 +62,146 @@ export const useTasksStore = create<TaskStore>((set) => ({
                 loading: false,
             })
         }
-    }
+    },
+    addComment: async (taskId, comment) => {
+        set({
+            loading: true,
+            error: null,
+        })
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 1000))
+            const updatedComment = {
+                ...comment,
+                id: crypto.randomUUID(),
+                createdAt: new Date().toLocaleDateString()
+            }
+            set((state) => ({
+                tasks: {
+                    ...state.tasks,
+                    [taskId]: {
+                        ...state.tasks[taskId],
+                        comments: [
+                            ...state.tasks[taskId].comments,
+                            updatedComment,
+                        ],
+                    },
+                },
+            }))
+        } catch {
+            set({
+                error: "error"
+            })
+        } finally {
+            set({
+                loading: false
+            })
+        }
+    },
+    // addTask: async (task:TaskDTO) => {
+    //     set({
+    //         loading: true,
+    //         error:null
+    //     })
+    //     try {
+    //         await new Promise((resolve) => setTimeout(resolve, 1000))
+    //         const newTask = {
+    //             ...task,
+    //             id: crypto.randomUUID(),
+    //             createdAt: new Date().toLocaleDateString()
+    //         }
+    //         // set((state) => ({
+    //         //     tasks: {
+    //         //         ...state.tasks,
+    //         //         [newTask.id]: {
+    //         //             newTask,
+    //         //             comments: [],
+    //         //         },
+    //         //     },
+    //         //     taskIdTodo: [...state.taskIdTodo,
+    //         //         newTask.id
+    //         //     ]
+    //         // }))
+
+    //         set((state) => ({
+    //             tasks: {
+    //                 ...state.tasks,
+    //                 [newTask.id]: {
+    //                     ...newTask,
+    //                     comments: [],
+    //                 },
+    //             },
+    //             taskIdTodo: [
+    //                 ...state.taskIdTodo,
+    //                 newTask.id,
+    //             ],
+    //         }))
+    //     } catch {
+    //         set({error:"error"})
+    //     } finally {
+    //         set({ loading: false})
+    //      }
+        
+        
+    // }
+    addTask: async (task: TaskDTO) => {
+        set({
+            loading: true,
+            error: null,
+        });
+
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 1000));
+
+            const newTask: Task = {
+                ...task,
+                id: crypto.randomUUID(),
+                createdAt: new Date().toLocaleDateString(),
+                comments: [],
+            };
+
+            set((state) => {
+                const updatedTasks = {
+                    ...state.tasks,
+                    [newTask.id]: newTask,
+                };
+
+
+                return {
+                    tasks: updatedTasks,
+
+                    taskIdTodo:
+                        newTask.status === "todo"
+                            ? [...state.taskIdTodo, newTask.id]
+                            : state.taskIdTodo,
+
+                    taskIdReview:
+                        newTask.status === "review"
+                            ? [...state.taskIdReview, newTask.id]
+                            : state.taskIdReview,
+
+                    taskIdDone:
+                        newTask.status === "done"
+                            ? [...state.taskIdDone, newTask.id]
+                            : state.taskIdDone,
+
+                    taskIdInProgress:
+                        newTask.status === "inProgress"
+                            ? [...state.taskIdInProgress, newTask.id]
+                            : state.taskIdInProgress,
+                };
+            });
+        } catch (error) {
+            console.error(error);
+
+            set({
+                error: "error",
+            });
+        } finally {
+            set({
+                loading: false,
+            });
+        }
+    },
 }))
 
 // {

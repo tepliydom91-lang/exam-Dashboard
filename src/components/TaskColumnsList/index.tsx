@@ -3,13 +3,14 @@ import { useTasksStore } from "../../store/taskStore"
 import type { TaskStatus } from "../../types"
 import { Columns, Board, Column, ColumnTitle } from "./style"
 
+
 const columns: { key: TaskStatus, title: string }[] = [
     {
         key: 'todo',
         title: "todo"
     },
     {
-        key: "in-progress",
+        key: "inProgress",
         title: "in-progress"
     },
     {
@@ -35,7 +36,7 @@ export const TaskColumnsList = () => {
 
     const tasksId: Record<TaskStatus, string[]> = {
         'todo': taskIdTodo,
-        "in-progress": taskIdInProgress,
+        "inProgress": taskIdInProgress,
         "review": taskIdReview,
         "done": taskIdDone
         }
@@ -48,10 +49,8 @@ export const TaskColumnsList = () => {
             <Columns>
                 {columns.map(({ title, key }) => {
                     const ids = tasksId[key]
-
-                    const columnTasks = ids.map(
-                        (id) => tasks[id]
-                    )
+                    
+                    
 
                     return (
                         <Column key={key}>
@@ -59,7 +58,7 @@ export const TaskColumnsList = () => {
                                 {title}
                             </ColumnTitle>
 
-                            <TasksList tasks={columnTasks} />
+                            <TasksList tasks={ids} />
                         </Column>
                     )
                 })}

@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import type { SignInDTO, User } from '../types'
+import type { SignInDTO, User, Options } from '../types'
 import mockUser from '../data/user.json'
 const users = mockUser as User[];
 
@@ -10,6 +10,8 @@ interface UserStore {
     error: string | null
     getUser: (data:SignInDTO) => Promise<User | undefined>
     clearUser: () => void
+    getAllUsers: () => Promise<void>
+    users:Options[]
 }
 
 
@@ -17,7 +19,8 @@ export const useUserStore = create < UserStore > ((set) => ({
     user: null,
     loading: false,
     error: null,
-
+    users: [],
+    
     getUser: async (data:SignInDTO) => {
         set({
             loading: true,
@@ -27,7 +30,6 @@ export const useUserStore = create < UserStore > ((set) => ({
         try {
             await new Promise((resolve) => setTimeout(resolve, 1000))
             const user = users.find(({ email }) => email === data.email);
-            console.log(user)
             if (!user) {
                 throw new Error('user not found')
             }
@@ -54,4 +56,21 @@ export const useUserStore = create < UserStore > ((set) => ({
             user: null,
         })
     },
+    getAllUsers: async () => {
+        set({
+            loading: true,
+            error:null
+        })
+        try {
+            await new Promise((resolve) => setTimeout(resolve, 1000))
+            const userData = users.map(({ name, id }) => ({ text: name, id }))
+            set({users:userData})
+        } catch {
+            set({
+                error: 'не удалось получить пользователей'
+          })
+        } finally {
+            set({loading:false})
+        }
+    }
 }))

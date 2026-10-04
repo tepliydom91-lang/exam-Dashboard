@@ -1,18 +1,29 @@
 import { useEffect } from "react"
-import { TasksList } from "../../components/TasksList"
 import { useTasksStore } from "../../store/taskStore"
 import { CircularProgress } from "@mui/material"
 import Snackbar from "@mui/material/Snackbar";
 import { TaskColumnsList } from "../../components/TaskColumnsList";
 
 export const TaskPage = () => {
-    const { loading, error, getTasks } = useTasksStore(
+    const { loading, error, getTasks, tasks, initialized } = useTasksStore(
         (state) => state
     )
 
+    // useEffect(() => {
+    //     getTasks()
+    // }, [])
+
+    // useEffect(() => {
+    //     if (Object.keys(tasks).length === 0) {
+    //         getTasks();
+    //     }
+    // }, [tasks, getTasks]);
+
     useEffect(() => {
-        getTasks()
-    }, [])
+        if (!initialized) {
+            getTasks()
+        }
+    }, [initialized, getTasks])
 
     if (loading) {
         return (

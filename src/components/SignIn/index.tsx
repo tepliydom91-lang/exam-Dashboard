@@ -1,6 +1,6 @@
 import { useForm, type SubmitHandler, FormProvider } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { signInSheme } from "./signInSheme";
+import { signInSheme } from "../../scheme/signInSheme";
 import { useUserStore } from "../../store/userStore";
 import CircularProgress from "@mui/material/CircularProgress";
 import { Input } from "../../components/Input";
@@ -12,8 +12,8 @@ import {
     Form,
     Title,
     Subtitle,
-    ErrorMessage,
 } from "./style"
+import { ErrorMessage } from "../common";
 
 
 export const SingIn = () => {
@@ -34,6 +34,7 @@ export const SingIn = () => {
 
         if (user) {
             navigate("/");
+            formProps.reset()
         }
     };
 
